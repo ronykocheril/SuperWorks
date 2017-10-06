@@ -27,10 +27,28 @@
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-    <% name = "Chunky Bacon" %>
-    <% 100.times do name%>
-      <br><%=name%></br>
-      <%end%>
+    <tr>
+      <% name = "Chunky Bacon" %>
+      <% 100.times do name%>
+        <br><%=name%></br>
+        <%end%>
+    </tr>
+
+    <tr>
+      <% tot = 0%>
+      <%p = @products.all.uniq{|r| r.name}%>
+      The number of unique products are: <%= p.count %>
+
+      <% @products.each {|e|%>
+      <% tot = tot + e.price}%>
+      <br> The average of all products is: <%=tot/@products.count%></br>
+
+      <% sum = 0%>
+      <% @products.each { |r| sum+= r.stock_quantity}%>
+      Sum of all quantities are: <%= sum %>
+    </tr>
+
+
 
 
   </tbody>
